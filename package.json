@@ -1,0 +1,25 @@
+{
+  "name": "poopcoin",
+  "version": "0.1.0",
+  "description": "Withdraw PoopCoin!",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronsky/poopcoin.git"
+  },
+  "keywords": [
+    "poop",
+    "coin",
+    "poopcoin",
+    "cryptocurrency"
+  ],
+  "author": "Aaron Sky",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aaronsky/poopcoin/issues"
+  },
+  "homepage": "https://github.com/aaronsky/poopcoin#readme"
+}
