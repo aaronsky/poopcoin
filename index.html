@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PoopCoin</title>
+</head>
+<body>
+  <p>PoopCoin</p>
+  <form action="" method="GET">
+    Withdraw: 
+    <input type="text" name="coincount" value="">
+    <input type="button" name="submit" value="Submit" onClick="giveCoin(this.form)">
+  </form>
+  <p id="message">You have withdrawn 0 PoopCoin!</p>
+  <script type="text/javascript">
+    function giveCoin (form) {
+      var message = document.getElementById('message');
+      message.innerHTML = 'You have withdrawn ' + form.coincount.value + ' PoopCoin!';
+    }
+  </script>
+</body>
+</html>
