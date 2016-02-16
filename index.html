@@ -2,19 +2,27 @@
 <html>
 <head>
   <title>PoopCoin</title>
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,500' rel='stylesheet' type='text/css' />
+  <link href="./main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-  <p>PoopCoin</p>
-  <form action="" method="GET">
-    Withdraw: 
-    <input type="text" name="coincount" value="">
-    <input type="button" name="submit" value="Submit" onClick="giveCoin(this.form)">
-  </form>
-  <p id="message">You have withdrawn 0 PoopCoin!</p>
+  <div class="Poopcoin">
+    <p class="Poopcoin_header">PoopCoin</p>
+    <form class="Poopcoin_form" action="" method="GET">
+      Withdraw: 
+      <input type="text" class="Poopcoin_textfield" name="coincount" value="" placeholder="How many PoopCoins do you want?">
+      <input type="button" class="Poopcoin_submit" name="submit" value="I would like this many PoopCoins plz" onClick="giveCoin(this.form)">
+    </form>
+    <p class="Poopcoin_message Poopcoin_message-hidden" id="message">You have withdrawn 0 PoopCoin!</p>
+  </div>
   <script type="text/javascript">
     function giveCoin (form) {
       var message = document.getElementById('message');
       message.innerHTML = 'You have withdrawn ' + form.coincount.value + ' PoopCoin!';
+      message.classList.remove("Poopcoin_message-hidden");
+      window.setTimeout(function() {
+        message.classList.add("Poopcoin_message-hidden");
+      }, 2000);
     }
   </script>
 </body>
