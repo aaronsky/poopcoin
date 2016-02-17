@@ -7,22 +7,78 @@
 </head>
 <body>
   <div class="Poopcoin">
+    <div class="Poopcoin_mascot" id="mascot"></div>
     <p class="Poopcoin_header">PoopCoin</p>
     <form class="Poopcoin_form" action="" method="GET">
       Withdraw: 
-      <input type="text" class="Poopcoin_textfield" name="coincount" value="" placeholder="How many PoopCoins do you want?">
-      <input type="button" class="Poopcoin_submit" name="submit" value="I would like this many PoopCoins plz" onClick="giveCoin(this.form)">
+      <input type="text" class="Poopcoin_textfield" id="input" name="coincount" value="" onInput="onInput()" placeholder="How many PoopCoins do you want?">
+      <input type="button" class="Poopcoin_submit" id="submit" name="submit" value="" onClick="onSubmit(this.form)" disabled>
     </form>
-    <p class="Poopcoin_message Poopcoin_message-hidden" id="message">You have withdrawn 0 PoopCoin!</p>
+    <p class="Poopcoin_message Poopcoin_message-hidden" id="message"></p>
   </div>
   <script type="text/javascript">
-    function giveCoin (form) {
-      var message = document.getElementById('message');
-      message.innerHTML = 'You have withdrawn ' + form.coincount.value + ' PoopCoin!';
-      message.classList.remove("Poopcoin_message-hidden");
+    var messageElement = document.getElementById('message');
+    var mascotElement = document.getElementById('mascot');
+    var inputElement = document.getElementById('input');
+    var submitElement = document.getElementById('submit');
+    var flavorText = [
+      'I would like this many PoopCoins plz.',
+      'I will not be satisfied until I am drowning in this many PoopCoins.',
+      'Give me this many PoopCoins.',
+      'Let\'s see where this joke goes.',
+      'I want PoopCoin to be part of my future!',
+      'Wanna play Blitzball?'
+    ];
+    resetButtonText();
+
+    function onInput () {
+      console.log ('input');
+      var value = inputElement.value;
+      if (!value) {
+        submitElement.disabled = true;
+      } else if (value.length === 0) {
+        inputElement.classList.add("Poopcoin_textfield-badinput");
+      } else if (isNaN(value)) {
+        inputElement.classList.add("Poopcoin_textfield-badinput");
+      } else {
+        submitElement.disabled = false;
+        inputElement.classList.remove("Poopcoin_textfield-badinput");
+      }
+    }
+
+    function onSubmit (form) {
+      var coinStr = form.coincount.value;
+      if (isNaN(coinStr)) {
+        giveCoin();
+      } else {
+        var coinValue = parseFloat(coinStr);
+        giveCoin(coinValue);
+      }
+    }
+
+    function giveCoin (value) {
+      if (!value || value === 0) {
+        var str = 'No PoopCoin for you!'; 
+      } else if (value < 0) {
+        var str = 'You\'re bleeding PoopCoin!';
+        mascotElement.classList.add("Poopcoin_mascot-happy");
+        messageElement.classList.remove("Poopcoin_message-hidden");
+      } else {
+        var str = 'You\'re the proud owner of ' + value + ' PoopCoins!';
+        mascotElement.classList.add("Poopcoin_mascot-happy");
+        messageElement.classList.remove("Poopcoin_message-hidden");
+      }
+      messageElement.innerHTML = str;
+      resetButtonText();
       window.setTimeout(function() {
-        message.classList.add("Poopcoin_message-hidden");
+        messageElement.classList.add("Poopcoin_message-hidden");
+        messageElement.innerHTML = '';
+        mascotElement.classList.remove("Poopcoin_mascot-happy");
       }, 2000);
+    }
+
+    function resetButtonText () {
+      submitElement.value = flavorText[ Math.floor( Math.random() * flavorText.length ) ];
     }
   </script>
 </body>

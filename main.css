@@ -28,6 +28,21 @@ body {
 	width: 100%;
 	padding: 0 15%;
 }
+	
+	.Poopcoin_mascot {
+    height: 200px; 
+    width: 200px; 
+    margin: 1rem auto;
+		background: url(./res/poop.svg);
+  	background-size: 200px 200px;
+		background-repeat: no-repeat; 
+	}
+
+		.Poopcoin_mascot-happy {
+			background: url(./res/happy.svg);
+  		background-size: 200px 200px;
+			background-repeat: no-repeat; 
+		}
 
 	.Poopcoin_header {
 		font-size: 2.4rem;
@@ -51,6 +66,10 @@ body {
 		font-size: 1.2rem;
 	}
 
+		.Poopcoin_textfield-badinput {
+			border: 2px solid #ff0000;
+		}
+
 	.Poopcoin_submit {
 		width: 100%;
 		height: 2.4rem;
@@ -64,6 +83,10 @@ body {
 	}
 		.Poopcoin_submit:hover {
 			background-color: #E5BE47;
+		}
+
+		.Poopcoin_submit:disabled {
+			background-color: #dddddd;
 		}
 
 	.Poopcoin_message {
